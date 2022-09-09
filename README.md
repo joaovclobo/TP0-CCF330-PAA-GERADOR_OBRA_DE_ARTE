@@ -3,8 +3,8 @@
 
 Professor responsável: 
 
-    - Daniel Mendes Barbosa 
+  - Daniel Mendes Barbosa 
     
-Aluno Responsável:
+Aluno responsável:
 
   - João Lobo - 4693
