@@ -16,6 +16,5 @@
 #define lin 20
 #define col 80
 
-void printMatrizChar(int linhas, int colunas, char quadro[col][lin]);
-
-void criaQuadroVazio(char quadro[col][lin]);
+void printMatrizChar(int linhas, int colunas, char quadro[lin][col]);
+void criaQuadroVazio(char quadro[lin][col]);
