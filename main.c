@@ -16,7 +16,10 @@
 int main(){
 
     int opcao;
+    int numeroFiguras;
     char quadro[lin][col];
+    time_t tempo;
+    srand((time(&tempo)));
 
     criaQuadroVazio(quadro);
 
@@ -33,8 +36,15 @@ int main(){
         switch (opcao){
 
         case 1:;
-            printMatrizChar(lin, col, quadro);
-            printf("1\n");
+
+            for (int i = 0; i < 80; i++)
+            {
+            
+            // printMatrizChar(lin, col, quadro);
+            // scanf("%d", &numeroFiguras);
+            numeroFiguras = -1;
+            printf("Numero : %d\n", numeroDeFigurasGerado(numeroFiguras));
+            }
 
             break;
 

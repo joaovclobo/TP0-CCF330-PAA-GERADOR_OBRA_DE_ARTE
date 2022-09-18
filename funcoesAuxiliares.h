@@ -13,8 +13,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #define lin 20
 #define col 80
 
 void printMatrizChar(int linhas, int colunas, char quadro[lin][col]);
 void criaQuadroVazio(char quadro[lin][col]);
+int numeroDeFigurasGerado(int numeroUsuario);

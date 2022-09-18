@@ -47,3 +47,17 @@ void criaQuadroVazio(char quadro[lin][col]){
         }
     }
 }
+
+int numeroDeFigurasGerado(int numeroUsuario){
+    
+    if (numeroUsuario <= 0 ){
+        return (rand() % 100 + 1);
+
+    } if (numeroUsuario > 100 ){
+        return 100;
+
+    } else {
+        return numeroUsuario;
+
+    }
+}
