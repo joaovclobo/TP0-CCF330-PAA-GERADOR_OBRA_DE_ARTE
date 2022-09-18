@@ -11,11 +11,13 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "funcoesAuxiliares.h"
 
 int main(){
+    char quadro[col][lin];
 
+    criaQuadroVazio(quadro);    
+    // printMatrizChar(lin, col, quadro);
     printf("Hello World");
     return 0;
 }
