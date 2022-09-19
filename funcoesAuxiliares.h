@@ -17,6 +17,18 @@
 #define lin 20
 #define col 80
 
+enum trueFalse {true = 1, false = 0};
+
 void printMatrizChar(int linhas, int colunas, char quadro[lin][col]);
 void criaQuadroVazio(char quadro[lin][col]);
-int numeroDeFigurasGerado(int numeroUsuario);
+int normalizaNumero(int numeroUsuario);
+void preencheAsteriscoSimples(int numeroFiguras, char quadro[lin][col]);
+void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheSomaAsteriscos(int numeroFiguras, char quadro[lin][col]);
+void preencheSomaAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheXAsteriscos(int numeroFiguras, char quadro[lin][col]);
+void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]);
+int geraLinhaAleatoria();
+int geraColunaAleatoria();
+int verificaVazio(int linha, int coluna, char quadro[lin][col]);

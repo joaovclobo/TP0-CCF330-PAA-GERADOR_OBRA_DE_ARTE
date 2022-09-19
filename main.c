@@ -21,8 +21,6 @@ int main(){
     time_t tempo;
     srand((time(&tempo)));
 
-    criaQuadroVazio(quadro);
-
     printf("\n\n|____________________________ Universidade Federal De Vicosa - Campus Florestal ___________________________|\n|________________ Trabalho prático 0 - Disciplina CCF 330 - PROJETO E ANÁLISE DE ALGORITMOS _______________|\n");
     printf("|_________________________________________ Gerador de obra de arte _________________________________________|\n\n");  
     printf("Professor responsável:\n    Daniel Mendes Barbosa\n\nAluno responsável:\n    Joao Vitor Chagas Lobo - 4693\n\n");
@@ -36,33 +34,42 @@ int main(){
         switch (opcao){
 
         case 1:;
-
-            for (int i = 0; i < 80; i++)
-            {
             
-            // printMatrizChar(lin, col, quadro);
-            // scanf("%d", &numeroFiguras);
-            numeroFiguras = -1;
-            printf("Numero : %d\n", numeroDeFigurasGerado(numeroFiguras));
-            }
+            criaQuadroVazio(quadro);
+            printMatrizChar(lin, col, quadro);
+            scanf("%d", &numeroFiguras);
+            preencheAsteriscoSimples(normalizaNumero(numeroFiguras), quadro);
+            printMatrizChar(lin, col, quadro);
 
             break;
 
         case 2:;
+
+            criaQuadroVazio(quadro);
             printMatrizChar(lin, col, quadro);
-            printf("2\n");
+            scanf("%d", &numeroFiguras);
+            preencheSomaAsteriscos(normalizaNumero(numeroFiguras), quadro);
+            printMatrizChar(lin, col, quadro);
 
             break;
 
         case 3:;
+
+            criaQuadroVazio(quadro);
             printMatrizChar(lin, col, quadro);
-            printf("3\n");
+            scanf("%d", &numeroFiguras);
+            preencheXAsteriscos(normalizaNumero(numeroFiguras), quadro);
+            printMatrizChar(lin, col, quadro);
 
             break;
 
         case 4:;
+            
+            criaQuadroVazio(quadro);
             printMatrizChar(lin, col, quadro);
-            printf("4\n");
+            scanf("%d", &numeroFiguras);
+            preencheFigsAleatorias(normalizaNumero(numeroFiguras), quadro);
+            printMatrizChar(lin, col, quadro);
 
             break;
 
