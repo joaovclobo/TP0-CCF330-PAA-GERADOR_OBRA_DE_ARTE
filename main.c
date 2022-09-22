@@ -80,10 +80,8 @@ int main(){
 
             criaQuadroVazio(quadro);
             printMatrizChar(lin, col, quadro);
-            preencheRetas(quadro);
+            preencheRetasFibonacci(quadro);
             printMatrizChar(lin, col, quadro);
-
-            printf("5\n");
 
             break;
 

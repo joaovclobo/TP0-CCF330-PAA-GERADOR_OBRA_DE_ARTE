@@ -34,9 +34,11 @@ void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, i
 
 void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]);
 
-void preencheRetas(char quadro[lin][col]);
+void preencheRetasFibonacci(char quadro[lin][col]);
 
-int sequenciaFibonacci(int poss);
+int sequenciaFibonacci(int pos);
+int serieHarmonica(int pos);
+
 int geraLinhaAleatoria();
 int geraColunaAleatoria();
 int verificaVazio(int linha, int coluna, char quadro[lin][col]);

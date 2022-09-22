@@ -205,56 +205,56 @@ void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
 
 void preencheRetasFibonacci(char quadro[lin][col]){
     
-    int i = 0, preenchido = false, numSorteado;
-
-    char barraInv = '\\', barra = '/', barraVert = '|', undeline = '_', traco = '-', igual = '=';
-    char retaSorteada;
-    char* retas = "\\/|_";
-    
-    int linha = sequenciaFibonacci(i) / 80;
+    int i = 0, numSorteado;
+    int linha = 1;
     int coluna = sequenciaFibonacci(i) % 80;
 
-
-    while (linha <= lin && coluna <= col) {
+    char* retas = "\\/|_";
+    
+    while (linha < lin && coluna <= col) {
+        
         numSorteado = rand() % 4;
-        retaSorteada = retas[numSorteado];
 
-        quadro[linha][coluna] = retaSorteada;
+        quadro[linha][coluna + 1] = retas[numSorteado];
         
-        linha = (sequenciaFibonacci(i) / 80) + 1;
-        coluna = (sequenciaFibonacci(i) % 80) + 1;
+                printf("%d\n", linha);
+
+        linha =  serieHarmonica(i) * 4;
+        coluna = sequenciaFibonacci(i) % 80;
+        
         i++;
-        
     }
 }
 
-void preencheRetasI(char quadro[lin][col], int linha, int coluna){
-      
-    char barraInv = '\\', barra = '/', barraVert = '|', undeline = '_', traco = '-', igual = '=';
-    char* retas = "\\/|_-=";
-    
-    int numSorteado = rand() % 6;
+int serieHarmonica(int pos){
 
-    char retaSorteada = retas[numSorteado];
+    float soma = 1;
+
+    for (int i = 2; i <= pos; i++){
+        
+        soma += (1.0/i);
+        
+    } 
+
+    return (int) soma;
     
-    quadro[linha][coluna] = retaSorteada;
 }
 
-int sequenciaFibonacci(int poss){
+int sequenciaFibonacci(int pos){
     
     int n1 = 0, n2 = 1;
     int n3 = n1 + n2;
 
-    if (poss <= 0 ){
+    if (pos <= 0 ){
 
         return n1;
 
-    } else if (poss == 1){
+    } else if (pos == 1){
         
         return n2;
 
     }else {
-        for (int i = 3; i <= poss; i++) {
+        for (int i = 3; i <= pos; i++) {
 
             n1 = n2;
             n2 = n3;
