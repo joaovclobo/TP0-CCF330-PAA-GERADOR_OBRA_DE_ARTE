@@ -78,10 +78,36 @@ int main(){
 
         case 5:;
 
-            criaQuadroVazio(quadro);
-            printMatrizChar(lin, col, quadro);
-            preencheRetasFibonacci(quadro);
-            printMatrizChar(lin, col, quadro);
+            int opcao2;
+
+            printf("\nEscolha a opção surpresa:\n 1 - Quadro feito com sequência de Fibonacci e serie Harmonica.\n 2 - Jogo Sneak.\n");
+            scanf("%d", &opcao2);
+
+            switch (opcao2){
+                case 1:;
+
+                    criaQuadroVazio(quadro);
+                    printMatrizChar(lin, col, quadro);
+                    preencheRetasFibonacci(quadro);
+                    printMatrizChar(lin, col, quadro);
+
+                break;
+
+                case 2:
+
+                    criaQuadroVazio(quadro);
+                    printMatrizChar(lin, col, quadro);
+                    preencheCirculos(quadro);
+                    printMatrizChar(lin, col, quadro);
+                
+                break;
+            
+            default:
+                printf("ERRO: Opcao invalida!\n");
+                break;
+            }
+
+
 
             break;
 

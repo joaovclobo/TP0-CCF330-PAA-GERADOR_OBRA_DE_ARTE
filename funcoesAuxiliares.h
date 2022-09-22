@@ -36,6 +36,9 @@ void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]);
 
 void preencheRetasFibonacci(char quadro[lin][col]);
 
+void preencheCirculos(char quadro[lin][col]);
+void preencheCirculosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+
 int sequenciaFibonacci(int pos);
 int serieHarmonica(int pos);
 

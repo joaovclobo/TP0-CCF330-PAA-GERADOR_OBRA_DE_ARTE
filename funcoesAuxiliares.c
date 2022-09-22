@@ -203,6 +203,41 @@ void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
     }
 }
 
+void preencheCirculos(char quadro[lin][col]){
+
+    int linha; int coluna;
+    int preenchido = false;
+    int numeroFiguras = rand() % 50;
+
+    for (int i = 0; i < numeroFiguras; i++){
+
+        preencheCirculosI(numeroFiguras, quadro, linha, coluna, preenchido);
+ 
+    }
+}
+
+void preencheCirculosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
+        
+    linha = geraLinhaAleatoria();
+    coluna = geraColunaAleatoria();
+    preenchido = false;
+    
+    while (!preenchido){
+
+        if (verificaVazio(linha, coluna, quadro)){
+            
+            quadro[linha][coluna] = 'O';
+            preenchido = true;
+
+        } else {
+
+            linha = geraLinhaAleatoria();
+            coluna = geraColunaAleatoria();
+
+        }
+    }
+}
+
 void preencheRetasFibonacci(char quadro[lin][col]){
     
     int i = 0, numSorteado;
