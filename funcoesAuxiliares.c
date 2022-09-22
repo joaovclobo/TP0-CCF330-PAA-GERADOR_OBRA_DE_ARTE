@@ -27,8 +27,6 @@ void printMatrizChar(int linhas, int colunas, char quadro[lin][col]){
 
 void criaQuadroVazio(char quadro[lin][col]){
 
-    char quadroI[lin][lin];
-
     for (int i = 0; i < lin; i++){
 
         for (int j = 0; j < col; j++){
@@ -39,6 +37,27 @@ void criaQuadroVazio(char quadro[lin][col]){
             } 
             else if (j == 0 || j == col-1){
                 quadro[i][j] = '|';
+
+            } else{
+                quadro[i][j] = ' ';
+
+            }
+        }
+    }
+}
+
+void criaQuadroVazioAlternativo(char quadro[lin][col]){
+
+    for (int i = 0; i < lin; i++){
+
+        for (int j = 0; j < col; j++){
+
+            if(i == 0 || i == lin-1){
+                quadro[i][j] = '=';
+                
+            } 
+            else if (j == 0 || j == col-1){
+                quadro[i][j] = 'I';
 
             } else{
                 quadro[i][j] = ' ';
@@ -207,12 +226,12 @@ void preencheCirculos(char quadro[lin][col]){
 
     int linha; int coluna;
     int preenchido = false;
-    int numeroFiguras = rand() % 50;
+    int numeroFiguras = rand() % 20;
 
     for (int i = 0; i < numeroFiguras; i++){
 
         preencheCirculosI(numeroFiguras, quadro, linha, coluna, preenchido);
- 
+
     }
 }
 
@@ -234,6 +253,151 @@ void preencheCirculosI(int numeroFiguras, char quadro[lin][col], int linha, int 
             linha = geraLinhaAleatoria();
             coluna = geraColunaAleatoria();
 
+        }
+    }
+}
+
+char substituiSneak(char valorCasa, int vertical){
+    
+    char novoValorCasa = valorCasa;
+    
+    switch (valorCasa) {
+        case ' ':
+        if (vertical){
+            novoValorCasa = '|';
+            break;
+        } else {
+        
+            novoValorCasa = '-';
+            break;
+        }
+        case 'O':
+            novoValorCasa = 'o';
+
+            break;
+        
+        default:
+            break;
+    }
+
+    return novoValorCasa;
+}
+
+void percorreSneak(int m, int n, char quadro[lin][col]){
+    
+    int i, k = 0, l = 0;
+    int mAux, nAux;
+    int caminhoVazio = true;    
+    char aux;
+ 
+    while (k < m && l < n) {
+        
+        caminhoVazio = true;
+        for (i = l; i < n; ++i) {
+            
+            if(quadro[k][i] == 'O'){
+                caminhoVazio = false;
+                break;
+            }
+            
+        } 
+        
+        if (!caminhoVazio){
+            for (i = l; i < n; ++i) {
+            
+            aux = quadro[k][i]; 
+            quadro[k][i] = '>';
+            printMatrizChar(lin, col, quadro);
+
+            quadro[k][i] = substituiSneak(aux, false);
+            printMatrizChar(lin, col, quadro);
+
+            }
+        }
+        k++;
+
+        for (i = k; i < m; ++i) {
+
+            if(quadro[i][n-1] == 'O'){
+                caminhoVazio = false;
+                break;
+            }
+
+        } 
+        
+        if (!caminhoVazio){
+            for (i = k; i < m; ++i) {
+            
+            aux = quadro[i][n-1];
+            quadro[i][n-1] = 'V';
+            printMatrizChar(lin, col, quadro);
+
+            quadro[i][n-1] = substituiSneak(aux, true);
+            printMatrizChar(lin, col, quadro);
+
+            }
+        }
+        n--;
+
+
+        if (k < m) {
+            mAux = m;
+
+            for (i = n - 1; i >= l; --i) {
+                        
+                if(quadro[m - 1][i] == 'O'){
+                    caminhoVazio = false;
+                    break;
+                }
+            }
+            m--;
+        } 
+        m = mAux;
+
+        if (!caminhoVazio){
+            if (k < m) {
+                for (i = n - 1; i >= l; --i) {
+                    
+                    aux = quadro[m - 1][i]; 
+                    quadro[m - 1][i] = '<';
+                    printMatrizChar(lin, col, quadro);
+
+                    quadro[m - 1][i] = substituiSneak(aux, false);
+                    printMatrizChar(lin, col, quadro);
+
+                }
+                m--;
+            }
+        }
+
+        if (l < n) {
+            nAux = n;
+
+            for (i = m - 1; i >= k; --i) {
+                
+                if(quadro[i][l] == 'O'){
+                    caminhoVazio = false;
+                    break;
+                }                    
+            }
+            l++;
+        }
+        n = nAux;
+
+        if (!caminhoVazio){
+            if (l < n) {
+                for (i = m - 1; i >= k; --i) {
+                    
+                    aux = quadro[i][l]; 
+                    quadro[i][l] = 'A';
+                    printMatrizChar(lin, col, quadro);
+
+                    quadro[i][l] = substituiSneak(aux, true);
+                    printMatrizChar(lin, col, quadro);
+
+                }
+                l++;
+            }
         }
     }
 }
@@ -350,4 +514,19 @@ int verificaVazio(int linha, int coluna, char quadro[lin][col]){
         return true;
 
     }
+}
+
+int comidaNaLinha(int linha, char quadro [lin][col]){
+
+    int encontrouComida = false;
+    int colComida = -1;
+
+    for (int i = 0; i < lin; i++){
+        if (quadro[linha][i] == 'O'){
+            encontrouComida = true;
+            colComida = i;
+        }
+    }
+
+    return encontrouComida;
 }

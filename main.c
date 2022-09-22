@@ -95,10 +95,10 @@ int main(){
 
                 case 2:
 
-                    criaQuadroVazio(quadro);
+                    criaQuadroVazioAlternativo(quadro);
                     printMatrizChar(lin, col, quadro);
                     preencheCirculos(quadro);
-                    printMatrizChar(lin, col, quadro);
+                    percorreSneak(lin, col, quadro);
                 
                 break;
             
