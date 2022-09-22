@@ -292,112 +292,58 @@ void percorreSneak(int m, int n, char quadro[lin][col]){
  
     while (k < m && l < n) {
         
-        caminhoVazio = true;
-        for (i = l; i < n; ++i) {
-            
-            if(quadro[k][i] == 'O'){
-                caminhoVazio = false;
-                break;
-            }
-            
-        } 
         
-        if (!caminhoVazio){
-            for (i = l; i < n; ++i) {
-            
-            aux = quadro[k][i]; 
-            quadro[k][i] = '>';
-            printMatrizChar(lin, col, quadro);
+        for (i = l; i < n; ++i) {
+        
+        aux = quadro[k][i]; 
+        quadro[k][i] = '>';
+        printMatrizChar(lin, col, quadro);
 
-            quadro[k][i] = substituiSneak(aux, false);
-            printMatrizChar(lin, col, quadro);
+        quadro[k][i] = substituiSneak(aux, false);
+        printMatrizChar(lin, col, quadro);
 
-            }
         }
         k++;
 
         for (i = k; i < m; ++i) {
-
-            if(quadro[i][n-1] == 'O'){
-                caminhoVazio = false;
-                break;
-            }
-
-        } 
         
-        if (!caminhoVazio){
-            for (i = k; i < m; ++i) {
-            
-            aux = quadro[i][n-1];
-            quadro[i][n-1] = 'V';
-            printMatrizChar(lin, col, quadro);
+        aux = quadro[i][n-1];
+        quadro[i][n-1] = 'V';
+        printMatrizChar(lin, col, quadro);
 
-            quadro[i][n-1] = substituiSneak(aux, true);
-            printMatrizChar(lin, col, quadro);
+        quadro[i][n-1] = substituiSneak(aux, true);
+        printMatrizChar(lin, col, quadro);
 
-            }
         }
         n--;
 
 
         if (k < m) {
-            mAux = m;
-
             for (i = n - 1; i >= l; --i) {
-                        
-                if(quadro[m - 1][i] == 'O'){
-                    caminhoVazio = false;
-                    break;
-                }
+                
+                aux = quadro[m - 1][i]; 
+                quadro[m - 1][i] = '<';
+                printMatrizChar(lin, col, quadro);
+
+                quadro[m - 1][i] = substituiSneak(aux, false);
+                printMatrizChar(lin, col, quadro);
+
             }
             m--;
-        } 
-        m = mAux;
-
-        if (!caminhoVazio){
-            if (k < m) {
-                for (i = n - 1; i >= l; --i) {
-                    
-                    aux = quadro[m - 1][i]; 
-                    quadro[m - 1][i] = '<';
-                    printMatrizChar(lin, col, quadro);
-
-                    quadro[m - 1][i] = substituiSneak(aux, false);
-                    printMatrizChar(lin, col, quadro);
-
-                }
-                m--;
-            }
         }
 
         if (l < n) {
-            nAux = n;
-
             for (i = m - 1; i >= k; --i) {
                 
-                if(quadro[i][l] == 'O'){
-                    caminhoVazio = false;
-                    break;
-                }                    
+                aux = quadro[i][l]; 
+                quadro[i][l] = 'A';
+                printMatrizChar(lin, col, quadro);
+
+                quadro[i][l] = substituiSneak(aux, true);
+                printMatrizChar(lin, col, quadro);
+
             }
             l++;
-        }
-        n = nAux;
-
-        if (!caminhoVazio){
-            if (l < n) {
-                for (i = m - 1; i >= k; --i) {
-                    
-                    aux = quadro[i][l]; 
-                    quadro[i][l] = 'A';
-                    printMatrizChar(lin, col, quadro);
-
-                    quadro[i][l] = substituiSneak(aux, true);
-                    printMatrizChar(lin, col, quadro);
-
-                }
-                l++;
-            }
         }
     }
 }
