@@ -206,19 +206,50 @@ void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
 void preencheRetasFibonacci(char quadro[lin][col]){
     
     int i = 0, numSorteado;
+    int numChars;
     int linha = 1;
     int coluna = sequenciaFibonacci(i) % 80;
 
     char* retas = "\\/|_";
-    
+    char* formasPlanas = "[-]_/|\\";
+    char* curvos = "()Oo.";
+    char* letras = "XLVTIMNZHWY";
+    char seqCharsSorteada[50];
+
+    int numSort2 = rand() % 4;
+
+    switch (numSort2) {
+        case 0:;
+            strcpy(seqCharsSorteada, retas);
+            numChars = 4;
+            break;
+
+        case 1:;
+            strcpy(seqCharsSorteada, formasPlanas);
+            numChars = 7;
+            break;
+
+        case 2:;
+            strcpy(seqCharsSorteada, curvos);
+            numChars = 5;
+            break;
+
+        case 3:;
+            strcpy(seqCharsSorteada, letras);
+            numChars = 11;
+            break;
+
+        default:
+            break;
+    }    
+
+ 
     while (linha < lin && coluna <= col) {
         
-        numSorteado = rand() % 4;
+        numSorteado = rand() % numChars;
 
-        quadro[linha][coluna + 1] = retas[numSorteado];
+        quadro[linha][coluna + 1] = seqCharsSorteada[numSorteado];
         
-                printf("%d\n", linha);
-
         linha =  serieHarmonica(i) * 4;
         coluna = sequenciaFibonacci(i) % 80;
         
