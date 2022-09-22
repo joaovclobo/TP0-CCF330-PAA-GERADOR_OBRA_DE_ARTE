@@ -18,11 +18,14 @@ int main(){
     int opcao;
     int numeroFiguras;
     char quadro[lin][col];
+
+    char* teste = "()%%[-]/|\\ XLVTIMNZHWY Oo";
+
     time_t tempo;
     srand((time(&tempo)));
 
     printf("\n\n|____________________________ Universidade Federal De Vicosa - Campus Florestal ___________________________|\n|________________ Trabalho prático 0 - Disciplina CCF 330 - PROJETO E ANÁLISE DE ALGORITMOS _______________|\n");
-    printf("|_________________________________________ Gerador de obra de arte _________________________________________|\n\n");  
+    printf("|________________________________________ Gerador de obra de arte _________________________________________|\n\n");  
     printf("Professor responsável:\n    Daniel Mendes Barbosa\n\nAluno responsável:\n    Joao Vitor Chagas Lobo - 4693\n\n");
     printf("|__________________________________________________________________________________________________________|\n\n");
 
@@ -74,7 +77,12 @@ int main(){
             break;
 
         case 5:;
+
+            criaQuadroVazio(quadro);
             printMatrizChar(lin, col, quadro);
+            preencheRetas(quadro);
+            printMatrizChar(lin, col, quadro);
+
             printf("5\n");
 
             break;
