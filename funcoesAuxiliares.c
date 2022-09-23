@@ -226,7 +226,7 @@ void preencheCirculos(char quadro[lin][col]){
 
     int linha; int coluna;
     int preenchido = false;
-    int numeroFiguras = rand() % 20;
+    int numeroFiguras = rand() % 50;
 
     for (int i = 0; i < numeroFiguras; i++){
 
@@ -263,14 +263,15 @@ char substituiSneak(char valorCasa, int vertical){
     
     switch (valorCasa) {
         case ' ':
-        if (vertical){
-            novoValorCasa = '|';
-            break;
-        } else {
-        
-            novoValorCasa = '-';
-            break;
-        }
+            if (vertical){
+                novoValorCasa = '|';
+                break;
+            } else {
+            
+                novoValorCasa = '-';
+                break;
+            }
+
         case 'O':
             novoValorCasa = 'o';
 
@@ -295,24 +296,28 @@ void percorreSneak(int m, int n, char quadro[lin][col]){
         
         for (i = l; i < n; ++i) {
         
-        aux = quadro[k][i]; 
-        quadro[k][i] = '>';
-        printMatrizChar(lin, col, quadro);
-
-        quadro[k][i] = substituiSneak(aux, false);
-        printMatrizChar(lin, col, quadro);
+            aux = quadro[k][i]; 
+            quadro[k][i] = '>';
+            printMatrizChar(lin, col, quadro);
+            usleep(12500);
+            
+            quadro[k][i] = substituiSneak(aux, false);
+            printMatrizChar(lin, col, quadro);
+            usleep(12500);
 
         }
         k++;
 
         for (i = k; i < m; ++i) {
         
-        aux = quadro[i][n-1];
-        quadro[i][n-1] = 'V';
-        printMatrizChar(lin, col, quadro);
-
-        quadro[i][n-1] = substituiSneak(aux, true);
-        printMatrizChar(lin, col, quadro);
+            aux = quadro[i][n-1];
+            quadro[i][n-1] = 'V';
+            printMatrizChar(lin, col, quadro);
+            usleep(12500);
+            
+            quadro[i][n-1] = substituiSneak(aux, true);
+            printMatrizChar(lin, col, quadro);
+            usleep(12500);
 
         }
         n--;
@@ -324,9 +329,12 @@ void percorreSneak(int m, int n, char quadro[lin][col]){
                 aux = quadro[m - 1][i]; 
                 quadro[m - 1][i] = '<';
                 printMatrizChar(lin, col, quadro);
-
+                usleep(12500);
+                
                 quadro[m - 1][i] = substituiSneak(aux, false);
                 printMatrizChar(lin, col, quadro);
+                usleep(12500);
+
 
             }
             m--;
@@ -338,9 +346,11 @@ void percorreSneak(int m, int n, char quadro[lin][col]){
                 aux = quadro[i][l]; 
                 quadro[i][l] = 'A';
                 printMatrizChar(lin, col, quadro);
-
+                usleep(12500);
+                
                 quadro[i][l] = substituiSneak(aux, true);
                 printMatrizChar(lin, col, quadro);
+                usleep(12500);
 
             }
             l++;
@@ -460,19 +470,4 @@ int verificaVazio(int linha, int coluna, char quadro[lin][col]){
         return true;
 
     }
-}
-
-int comidaNaLinha(int linha, char quadro [lin][col]){
-
-    int encontrouComida = false;
-    int colComida = -1;
-
-    for (int i = 0; i < lin; i++){
-        if (quadro[linha][i] == 'O'){
-            encontrouComida = true;
-            colComida = i;
-        }
-    }
-
-    return encontrouComida;
 }
