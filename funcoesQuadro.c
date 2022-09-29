@@ -15,7 +15,7 @@
 
 //Funções da opção 1
 
-void preencheAsteriscoSimples(int numeroFiguras, char quadro[lin][col]){
+void preencheAsteriscoSimples(int numeroFiguras, char quadro[LIN][COL]){
 
     int linha; int coluna;
     int preenchido = false;
@@ -27,7 +27,7 @@ void preencheAsteriscoSimples(int numeroFiguras, char quadro[lin][col]){
     }
 }
 
-void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
+void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido){
         
     linha = geraLinhaAleatoria();
     coluna = geraColunaAleatoria();
@@ -51,7 +51,7 @@ void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[lin][col], int lin
 
 //Funções da opção 2
 
-void preencheSomaAsteriscos(int numeroFiguras, char quadro[lin][col]){
+void preencheSomaAsteriscos(int numeroFiguras, char quadro[LIN][COL]){
 
     int linha; int coluna;
     int preenchido = false;
@@ -63,7 +63,7 @@ void preencheSomaAsteriscos(int numeroFiguras, char quadro[lin][col]){
     }
 }
 
-void preencheSomaAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
+void preencheSomaAsteriscosI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido){
         
     linha = geraLinhaAleatoria();
     coluna = geraColunaAleatoria();
@@ -94,7 +94,7 @@ void preencheSomaAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha
 
 //Funções da opção 3
 
-void preencheXAsteriscos(int numeroFiguras, char quadro[lin][col]){
+void preencheXAsteriscos(int numeroFiguras, char quadro[LIN][COL]){
 
     int linha; int coluna;
     int preenchido = false;
@@ -106,7 +106,7 @@ void preencheXAsteriscos(int numeroFiguras, char quadro[lin][col]){
     }
 }
 
-void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
+void preencheXAsteriscosI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido){
         
     linha = geraLinhaAleatoria();
     coluna = geraColunaAleatoria();
@@ -137,7 +137,7 @@ void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, i
 
 //Função da opção 4
 
-void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
+void preencheFigsAleatorias(int numeroFiguras, char quadro[LIN][COL]){
         
     int linha; int coluna;
     int preenchido = false;
@@ -164,7 +164,7 @@ void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
 
 //Funções da opção 5 - Fibonacci e série harmonica
 
-void preencheRetasFibonacci(char quadro[lin][col]){
+void preencheRetasFibonacci(char quadro[LIN][COL]){
     
     int i = 0, numSorteado;
     int numChars;
@@ -205,7 +205,7 @@ void preencheRetasFibonacci(char quadro[lin][col]){
     }    
 
  
-    while (linha < lin && coluna <= col) {
+    while (linha < LIN && coluna <= COL) {
         
         numSorteado = rand() % numChars;
 
@@ -220,7 +220,7 @@ void preencheRetasFibonacci(char quadro[lin][col]){
 
 //Funções da opção 5 - Snake
 
-void preencheComidas(char quadro[lin][col]){
+void preencheComidas(char quadro[LIN][COL]){
 
     int linha; int coluna;
     int preenchido = false;
@@ -233,7 +233,7 @@ void preencheComidas(char quadro[lin][col]){
     }
 }
 
-void preencheComidasI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
+void preencheComidasI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido){
         
     linha = geraLinhaAleatoria();
     coluna = geraColunaAleatoria();
@@ -255,28 +255,28 @@ void preencheComidasI(int numeroFiguras, char quadro[lin][col], int linha, int c
     }
 }
 
-void percorreSnakeZigZag(char quadro[lin][col]){
+void percorreSnakeZigZag(char quadro[LIN][COL]){
     
     int alternaZigZag = true;
     char aux;
 
-    for (int i = 1; i < lin-1; i++){
+    for (int i = 1; i < LIN-1; i++){
 
         if (alternaZigZag){
 
             if (comidaNaLinha(i, quadro)){
 
-                // caminhaEsqDir(i, 1, col-1, quadro);
+                // caminhaEsqDir(i, 1, COL-1, quadro);
 
-                for (int j = 1; j < col-1; j++){
+                for (int j = 1; j < COL-1; j++){
         
                     aux = quadro[i][j]; 
                     quadro[i][j] = '>';
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                     
                     quadro[i][j] = substituiSnake(aux, false);
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
 
                 }
@@ -288,11 +288,11 @@ void percorreSnakeZigZag(char quadro[lin][col]){
 
                 aux = quadro[i][1];
                 quadro[i][1] = 'V';
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
                 
                 quadro[i][1] = substituiSnake(aux, true);
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
             }
 
@@ -300,17 +300,17 @@ void percorreSnakeZigZag(char quadro[lin][col]){
 
             if (comidaNaLinha(i, quadro)){
 
-                // caminhaDirEsq(i, col-2, 1, quadro);
+                // caminhaDirEsq(i, COL-2, 1, quadro);
 
-                for (int j = col-2; j >= 1; j--){
+                for (int j = COL-2; j >= 1; j--){
         
                     aux = quadro[i][j]; 
                     quadro[i][j] = '<';
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                     
                     quadro[i][j] = substituiSnake(aux, false);
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                 }
 
@@ -318,13 +318,13 @@ void percorreSnakeZigZag(char quadro[lin][col]){
 
             } else{
                 
-                aux = quadro[i][col-2];
-                quadro[i][col-2] = 'V';
-                printMatrizChar(lin, col, quadro);
+                aux = quadro[i][COL-2];
+                quadro[i][COL-2] = 'V';
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
                 
-                quadro[i][col-2] = substituiSnake(aux, true);
-                printMatrizChar(lin, col, quadro);
+                quadro[i][COL-2] = substituiSnake(aux, true);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
 
             }
@@ -332,9 +332,9 @@ void percorreSnakeZigZag(char quadro[lin][col]){
     }
 }
 
-void percorreSnakeEspiral(char quadro[lin][col]){
+void percorreSnakeEspiral(char quadro[LIN][COL]){
     
-    int m = lin, n = col;
+    int m = LIN, n = COL;
     int i, k = 0, l = 0;
     int mAux, nAux;
     int caminhoVazio = true;    
@@ -349,11 +349,11 @@ void percorreSnakeEspiral(char quadro[lin][col]){
 
             aux = quadro[k][i]; 
                 quadro[k][i] = '>';
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
                 
                 quadro[k][i] = substituiSnake(aux, false);
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
             
             }
@@ -362,15 +362,15 @@ void percorreSnakeEspiral(char quadro[lin][col]){
 
         for (i = k; i < m; ++i) {
             
-            if (n-1 != col-1){
+            if (n-1 != COL-1){
             
                 aux = quadro[i][n-1];
                 quadro[i][n-1] = 'V';
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
                 
                 quadro[i][n-1] = substituiSnake(aux, true);
-                printMatrizChar(lin, col, quadro);
+                printMatrizChar(LIN, COL, quadro);
                 usleep(12500);
 
             }
@@ -381,15 +381,15 @@ void percorreSnakeEspiral(char quadro[lin][col]){
         if (k < m) {
             for (i = n - 1; i >= l; --i) {
                 
-                if (m-1 != lin-1){
+                if (m-1 != LIN-1){
                 
                     aux = quadro[m - 1][i]; 
                     quadro[m - 1][i] = '<';
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                     
                     quadro[m - 1][i] = substituiSnake(aux, false);
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                 }
 
@@ -404,11 +404,11 @@ void percorreSnakeEspiral(char quadro[lin][col]){
                 
                     aux = quadro[i][l]; 
                     quadro[i][l] = 'A';
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
                     
                     quadro[i][l] = substituiSnake(aux, true);
-                    printMatrizChar(lin, col, quadro);
+                    printMatrizChar(LIN, COL, quadro);
                     usleep(12500);
 
                 }

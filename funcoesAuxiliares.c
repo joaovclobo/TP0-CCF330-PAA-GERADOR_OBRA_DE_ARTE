@@ -15,7 +15,7 @@
 
 //Funções gerais
 
-void printMatrizChar(int linhas, int colunas, char quadro[lin][col]){
+void printMatrizChar(int linhas, int colunas, char quadro[LIN][COL]){
 
     for (int i = 0; i < linhas; i++){
         for (int j = 0; j < colunas; j++){
@@ -27,17 +27,17 @@ void printMatrizChar(int linhas, int colunas, char quadro[lin][col]){
     }
 }
 
-void criaQuadroVazio(char quadro[lin][col]){
+void criaQuadroVazio(char quadro[LIN][COL]){
 
-    for (int i = 0; i < lin; i++){
+    for (int i = 0; i < LIN; i++){
 
-        for (int j = 0; j < col; j++){
+        for (int j = 0; j < COL; j++){
 
-            if(i == 0 || i == lin-1){
+            if(i == 0 || i == LIN-1){
                 quadro[i][j] = '-';
                 
             } 
-            else if (j == 0 || j == col-1){
+            else if (j == 0 || j == COL-1){
                 quadro[i][j] = '|';
 
             } else{
@@ -48,17 +48,17 @@ void criaQuadroVazio(char quadro[lin][col]){
     }
 }
 
-void criaQuadroVazioAlternativo(char quadro[lin][col]){
+void criaQuadroVazioAlternativo(char quadro[LIN][COL]){
 
-    for (int i = 0; i < lin; i++){
+    for (int i = 0; i < LIN; i++){
 
-        for (int j = 0; j < col; j++){
+        for (int j = 0; j < COL; j++){
 
-            if(i == 0 || i == lin-1){
+            if(i == 0 || i == LIN-1){
                 quadro[i][j] = '=';
                 
             } 
-            else if (j == 0 || j == col-1){
+            else if (j == 0 || j == COL-1){
                 quadro[i][j] = 'I';
 
             } else{
@@ -83,7 +83,7 @@ int normalizaNumero(int numeroUsuario){
     }
 }
 
-int verificaVazio(int linha, int coluna, char quadro[lin][col]){
+int verificaVazio(int linha, int coluna, char quadro[LIN][COL]){
     
     if (quadro[linha][coluna] != ' '){
         return false;
@@ -176,11 +176,11 @@ char substituiSnake(char valorCasa, int vertical){
     return novoValorCasa;
 }
 
-int comidaNaLinha(int linha, char quadro[lin][col]){
+int comidaNaLinha(int linha, char quadro[LIN][COL]){
     
     int comida = false;
     
-    for (int i = 0; i < col; i++){
+    for (int i = 0; i < COL; i++){
         if (quadro[linha][i] == 'O'){
             comida = true;
             break;

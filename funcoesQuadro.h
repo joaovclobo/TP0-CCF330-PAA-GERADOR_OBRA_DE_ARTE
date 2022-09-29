@@ -16,41 +16,41 @@
 
 //Funções da opção 1
 
-void preencheAsteriscoSimples(int numeroFiguras, char quadro[lin][col]);
+void preencheAsteriscoSimples(int numeroFiguras, char quadro[LIN][COL]);
 
-void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido);
 
 
 //Funções da opção 2
 
-void preencheSomaAsteriscos(int numeroFiguras, char quadro[lin][col]);
+void preencheSomaAsteriscos(int numeroFiguras, char quadro[LIN][COL]);
 
-void preencheSomaAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheSomaAsteriscosI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido);
 
 
 //Funções da opção 3
 
-void preencheXAsteriscos(int numeroFiguras, char quadro[lin][col]);
+void preencheXAsteriscos(int numeroFiguras, char quadro[LIN][COL]);
 
-void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheXAsteriscosI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido);
 
 
 //Função da opção 4
 
-void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]);
+void preencheFigsAleatorias(int numeroFiguras, char quadro[LIN][COL]);
 
 
 //Funções da opção 5 - Fibonacci e série harmonica
 
-void preencheRetasFibonacci(char quadro[lin][col]);
+void preencheRetasFibonacci(char quadro[LIN][COL]);
 
 
 //Funções da opção 5 - Snake
 
-void preencheComidas(char quadro[lin][col]);
+void preencheComidas(char quadro[LIN][COL]);
 
-void preencheComidasI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido);
+void preencheComidasI(int numeroFiguras, char quadro[LIN][COL], int linha, int coluna, int preenchido);
 
-void percorreSnakeZigZag(char quadro[lin][col]);
+void percorreSnakeZigZag(char quadro[LIN][COL]);
 
-void percorreSnakeEspiral(char quadro[lin][col]);
+void percorreSnakeEspiral(char quadro[LIN][COL]);

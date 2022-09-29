@@ -16,8 +16,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#define lin 20
-#define col 80
+#define LIN 20
+#define COL 80
 
 enum trueFalse {
     true = 1, false = 0
@@ -25,15 +25,15 @@ enum trueFalse {
 
 //Funções gerais
 
-void printMatrizChar(int linhas, int colunas, char quadro[lin][col]);
+void printMatrizChar(int linhas, int colunas, char quadro[LIN][COL]);
 
-void criaQuadroVazio(char quadro[lin][col]);
+void criaQuadroVazio(char quadro[LIN][COL]);
 
-void criaQuadroVazioAlternativo(char quadro[lin][col]);
+void criaQuadroVazioAlternativo(char quadro[LIN][COL]);
 
 int normalizaNumero(int numeroUsuario);
 
-int verificaVazio(int linha, int coluna, char quadro[lin][col]);
+int verificaVazio(int linha, int coluna, char quadro[LIN][COL]);
 
 int geraLinhaAleatoria();
 
@@ -49,4 +49,4 @@ int serieHarmonica(int pos);
 
 char substituiSnake(char valorCasa, int vertical);
 
-int comidaNaLinha(int linha, char quadro[lin][col]);
+int comidaNaLinha(int linha, char quadro[LIN][COL]);
