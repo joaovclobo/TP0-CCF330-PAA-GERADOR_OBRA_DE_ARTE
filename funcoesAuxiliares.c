@@ -13,6 +13,8 @@
 
 #include "funcoesAuxiliares.h"
 
+//Funções gerais
+
 void printMatrizChar(int linhas, int colunas, char quadro[lin][col]){
 
     for (int i = 0; i < linhas; i++){
@@ -81,336 +83,29 @@ int normalizaNumero(int numeroUsuario){
     }
 }
 
-void preencheAsteriscoSimples(int numeroFiguras, char quadro[lin][col]){
-
-    int linha; int coluna;
-    int preenchido = false;
-
-    for (int i = 0; i < numeroFiguras; i++){
-
-        preencheAsteriscoSimplesI(numeroFiguras, quadro, linha, coluna, preenchido);
- 
-    }
-}
-
-void preencheAsteriscoSimplesI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
-        
-    linha = geraLinhaAleatoria();
-    coluna = geraColunaAleatoria();
-    preenchido = false;
+int verificaVazio(int linha, int coluna, char quadro[lin][col]){
     
-    while (!preenchido){
+    if (quadro[linha][coluna] != ' '){
+        return false;
 
-        if (verificaVazio(linha, coluna, quadro)){
-            
-            quadro[linha][coluna] = '*';
-            preenchido = true;
-
-        } else {
-
-            linha = geraLinhaAleatoria();
-            coluna = geraColunaAleatoria();
-
-        }
-    }
-}
-
-void preencheSomaAsteriscos(int numeroFiguras, char quadro[lin][col]){
-
-    int linha; int coluna;
-    int preenchido = false;
-
-    for (int i = 0; i < numeroFiguras; i++){
-
-        preencheSomaAsteriscosI(numeroFiguras, quadro, linha, coluna, preenchido);
- 
-    }
-}
-
-void preencheSomaAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
-        
-    linha = geraLinhaAleatoria();
-    coluna = geraColunaAleatoria();
-    preenchido = false;
-    
-    while (!preenchido){
-
-        if (verificaVazio(linha, coluna, quadro) && verificaVazio(linha-1, coluna, quadro) && verificaVazio(linha+1, coluna, quadro) && verificaVazio(linha, coluna-1, quadro) && verificaVazio(linha, coluna+1, quadro)){
-            
-            quadro[linha][coluna] = '*';
-
-            quadro[linha-1][coluna] = '*';
-            quadro[linha+1][coluna] = '*';
-
-            quadro[linha][coluna-1] = '*';
-            quadro[linha][coluna+1] = '*';
-
-            preenchido = true;
-
-        } else {
-
-            linha = geraLinhaAleatoria();
-            coluna = geraColunaAleatoria();
-
-        }
-    }
-}
-
-void preencheXAsteriscos(int numeroFiguras, char quadro[lin][col]){
-
-    int linha; int coluna;
-    int preenchido = false;
-
-    for (int i = 0; i < numeroFiguras; i++){
-
-        preencheXAsteriscosI(numeroFiguras, quadro, linha, coluna, preenchido);
+    } else{
+        return true;
 
     }
 }
 
-void preencheXAsteriscosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
-        
-    linha = geraLinhaAleatoria();
-    coluna = geraColunaAleatoria();
-    preenchido = false;
-    
-    while (!preenchido){
+int geraLinhaAleatoria(){
+    return (rand() % 18 + 1);
 
-        if (verificaVazio(linha, coluna, quadro) && verificaVazio(linha-1, coluna-1, quadro) && verificaVazio(linha-1, coluna+1, quadro) && verificaVazio(linha+1, coluna-1, quadro) && verificaVazio(linha+1, coluna+1, quadro)){
-            
-            quadro[linha][coluna] = '*';
-
-            quadro[linha-1][coluna-1] = '*';
-            quadro[linha-1][coluna+1] = '*';
-
-            quadro[linha+1][coluna-1] = '*';
-            quadro[linha+1][coluna+1] = '*';
-
-            preenchido = true;
-
-        } else {
-
-            linha = geraLinhaAleatoria();
-            coluna = geraColunaAleatoria();
-
-        }
-    }
 }
 
-void preencheFigsAleatorias(int numeroFiguras, char quadro[lin][col]){
-        
-    int linha; int coluna;
-    int preenchido = false;
+int geraColunaAleatoria(){
+    return (rand() % 78 + 1);
 
-    for (int i = 0; i < numeroFiguras; i++){
-
-        int tipoFigura  = rand() % 3;
-
-        if (tipoFigura == 0) {
-            
-            preencheAsteriscoSimplesI(numeroFiguras, quadro, linha, coluna, preenchido);
-
-        } else if (tipoFigura == 1) {
-
-            preencheSomaAsteriscosI(numeroFiguras, quadro, linha, coluna, preenchido);
-
-        } else {
-            
-            preencheXAsteriscosI(numeroFiguras, quadro, linha, coluna, preenchido);            
-
-        }
-    }
 }
 
-void preencheCirculos(char quadro[lin][col]){
 
-    int linha; int coluna;
-    int preenchido = false;
-    int numeroFiguras = rand() % 50;
-
-    for (int i = 0; i < numeroFiguras; i++){
-
-        preencheCirculosI(numeroFiguras, quadro, linha, coluna, preenchido);
-
-    }
-}
-
-void preencheCirculosI(int numeroFiguras, char quadro[lin][col], int linha, int coluna, int preenchido){
-        
-    linha = geraLinhaAleatoria();
-    coluna = geraColunaAleatoria();
-    preenchido = false;
-    
-    while (!preenchido){
-
-        if (verificaVazio(linha, coluna, quadro)){
-            
-            quadro[linha][coluna] = 'O';
-            preenchido = true;
-
-        } else {
-
-            linha = geraLinhaAleatoria();
-            coluna = geraColunaAleatoria();
-
-        }
-    }
-}
-
-char substituiSneak(char valorCasa, int vertical){
-    
-    char novoValorCasa = valorCasa;
-    
-    switch (valorCasa) {
-        case ' ':
-            if (vertical){
-                novoValorCasa = '|';
-                break;
-            } else {
-            
-                novoValorCasa = '-';
-                break;
-            }
-
-        case 'O':
-            novoValorCasa = 'o';
-
-            break;
-        
-        default:
-            break;
-    }
-
-    return novoValorCasa;
-}
-
-void percorreSneak(int m, int n, char quadro[lin][col]){
-    
-    int i, k = 0, l = 0;
-    int mAux, nAux;
-    int caminhoVazio = true;    
-    char aux;
- 
-    while (k < m && l < n) {
-        
-        
-        for (i = l; i < n; ++i) {
-        
-            aux = quadro[k][i]; 
-            quadro[k][i] = '>';
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
-            
-            quadro[k][i] = substituiSneak(aux, false);
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
-
-        }
-        k++;
-
-        for (i = k; i < m; ++i) {
-        
-            aux = quadro[i][n-1];
-            quadro[i][n-1] = 'V';
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
-            
-            quadro[i][n-1] = substituiSneak(aux, true);
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
-
-        }
-        n--;
-
-
-        if (k < m) {
-            for (i = n - 1; i >= l; --i) {
-                
-                aux = quadro[m - 1][i]; 
-                quadro[m - 1][i] = '<';
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
-                
-                quadro[m - 1][i] = substituiSneak(aux, false);
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
-
-
-            }
-            m--;
-        }
-
-        if (l < n) {
-            for (i = m - 1; i >= k; --i) {
-                
-                aux = quadro[i][l]; 
-                quadro[i][l] = 'A';
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
-                
-                quadro[i][l] = substituiSneak(aux, true);
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
-
-            }
-            l++;
-        }
-    }
-}
-
-void preencheRetasFibonacci(char quadro[lin][col]){
-    
-    int i = 0, numSorteado;
-    int numChars;
-    int linha = 1;
-    int coluna = sequenciaFibonacci(i) % 80;
-
-    char* retas = "\\/|_";
-    char* formasPlanas = "[-]_/|\\";
-    char* curvos = "()Oo.";
-    char* letras = "XLVTIMNZHWY";
-    char seqCharsSorteada[50];
-
-    int numSort2 = rand() % 4;
-
-    switch (numSort2) {
-        case 0:;
-            strcpy(seqCharsSorteada, retas);
-            numChars = 4;
-            break;
-
-        case 1:;
-            strcpy(seqCharsSorteada, formasPlanas);
-            numChars = 7;
-            break;
-
-        case 2:;
-            strcpy(seqCharsSorteada, curvos);
-            numChars = 5;
-            break;
-
-        case 3:;
-            strcpy(seqCharsSorteada, letras);
-            numChars = 11;
-            break;
-
-        default:
-            break;
-    }    
-
- 
-    while (linha < lin && coluna <= col) {
-        
-        numSorteado = rand() % numChars;
-
-        quadro[linha][coluna + 1] = seqCharsSorteada[numSorteado];
-        
-        linha =  serieHarmonica(i) * 4;
-        coluna = sequenciaFibonacci(i) % 80;
-        
-        i++;
-    }
-}
+//Funções da opção 5 - Fibonacci e série harmonica
 
 int serieHarmonica(int pos){
 
@@ -451,23 +146,45 @@ int sequenciaFibonacci(int pos){
     return n3;
 }
 
-int geraLinhaAleatoria(){
-    return (rand() % 18 + 1);
 
-}
+//Funções da opção 5 - Snake
 
-int geraColunaAleatoria(){
-    return (rand() % 78 + 1);
-
-}
-
-int verificaVazio(int linha, int coluna, char quadro[lin][col]){
+char substituiSnake(char valorCasa, int vertical){
     
-    if (quadro[linha][coluna] != ' '){
-        return false;
+    char novoValorCasa = valorCasa;
+    
+    switch (valorCasa) {
+        case ' ':
+            if (vertical){
+                novoValorCasa = '|';
+                break;
+            } else {
+            
+                novoValorCasa = '-';
+                break;
+            }
 
-    } else{
-        return true;
+        case 'O':
+            novoValorCasa = 'o';
 
+            break;
+        
+        default:
+            break;
     }
+
+    return novoValorCasa;
+}
+
+int comidaNaLinha(int linha, char quadro[lin][col]){
+    
+    int comida = false;
+    
+    for (int i = 0; i < col; i++){
+        if (quadro[linha][i] == 'O'){
+            comida = true;
+            break;
+        }
+    }
+    return comida;
 }
