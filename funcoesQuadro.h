@@ -53,4 +53,4 @@ void preencheComidasI(int numeroFiguras, char quadro[lin][col], int linha, int c
 
 void percorreSnakeZigZag(char quadro[lin][col]);
 
-void percorreSnakeEspiral(int m, int n, char quadro[lin][col]);
+void percorreSnakeEspiral(char quadro[lin][col]);

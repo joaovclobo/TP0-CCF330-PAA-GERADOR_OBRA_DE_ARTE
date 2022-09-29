@@ -332,8 +332,9 @@ void percorreSnakeZigZag(char quadro[lin][col]){
     }
 }
 
-void percorreSnakeEspiral(int m, int n, char quadro[lin][col]){
+void percorreSnakeEspiral(char quadro[lin][col]){
     
+    int m = lin, n = col;
     int i, k = 0, l = 0;
     int mAux, nAux;
     int caminhoVazio = true;    
@@ -344,29 +345,35 @@ void percorreSnakeEspiral(int m, int n, char quadro[lin][col]){
         
         for (i = l; i < n; ++i) {
         
-            aux = quadro[k][i]; 
-            quadro[k][i] = '>';
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
-            
-            quadro[k][i] = substituiSnake(aux, false);
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
+        if (k != 0){
 
+            aux = quadro[k][i]; 
+                quadro[k][i] = '>';
+                printMatrizChar(lin, col, quadro);
+                usleep(12500);
+                
+                quadro[k][i] = substituiSnake(aux, false);
+                printMatrizChar(lin, col, quadro);
+                usleep(12500);
+            
+            }
         }
         k++;
 
         for (i = k; i < m; ++i) {
-        
-            aux = quadro[i][n-1];
-            quadro[i][n-1] = 'V';
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
             
-            quadro[i][n-1] = substituiSnake(aux, true);
-            printMatrizChar(lin, col, quadro);
-            usleep(12500);
+            if (n-1 != col-1){
+            
+                aux = quadro[i][n-1];
+                quadro[i][n-1] = 'V';
+                printMatrizChar(lin, col, quadro);
+                usleep(12500);
+                
+                quadro[i][n-1] = substituiSnake(aux, true);
+                printMatrizChar(lin, col, quadro);
+                usleep(12500);
 
+            }
         }
         n--;
 
@@ -374,15 +381,17 @@ void percorreSnakeEspiral(int m, int n, char quadro[lin][col]){
         if (k < m) {
             for (i = n - 1; i >= l; --i) {
                 
-                aux = quadro[m - 1][i]; 
-                quadro[m - 1][i] = '<';
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
+                if (m-1 != lin-1){
                 
-                quadro[m - 1][i] = substituiSnake(aux, false);
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
-
+                    aux = quadro[m - 1][i]; 
+                    quadro[m - 1][i] = '<';
+                    printMatrizChar(lin, col, quadro);
+                    usleep(12500);
+                    
+                    quadro[m - 1][i] = substituiSnake(aux, false);
+                    printMatrizChar(lin, col, quadro);
+                    usleep(12500);
+                }
 
             }
             m--;
@@ -391,15 +400,18 @@ void percorreSnakeEspiral(int m, int n, char quadro[lin][col]){
         if (l < n) {
             for (i = m - 1; i >= k; --i) {
                 
-                aux = quadro[i][l]; 
-                quadro[i][l] = 'A';
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
+                if (l != 0){
                 
-                quadro[i][l] = substituiSnake(aux, true);
-                printMatrizChar(lin, col, quadro);
-                usleep(12500);
+                    aux = quadro[i][l]; 
+                    quadro[i][l] = 'A';
+                    printMatrizChar(lin, col, quadro);
+                    usleep(12500);
+                    
+                    quadro[i][l] = substituiSnake(aux, true);
+                    printMatrizChar(lin, col, quadro);
+                    usleep(12500);
 
+                }
             }
             l++;
         }

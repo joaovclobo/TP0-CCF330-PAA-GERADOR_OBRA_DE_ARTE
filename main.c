@@ -113,7 +113,7 @@ int main(){
 
             int opcao2;
 
-            printf("\nEscolha a opção surpresa:\n\n    1 - Quadro feito com sequência de Fibonacci e serie Harmonica.\n    2 - Jogo Snake automático espiral.\n    3 - Jogo Snake automático zig zag.");
+            printf("\nEscolha a opção surpresa:\n\n    1 - Quadro feito com sequência de Fibonacci e serie Harmonica.\n    2 - Jogo Snake automático espiral.\n    3 - Jogo Snake automático zig zag.\n");
             scanf("%d", &opcao2);
 
             switch (opcao2){
@@ -131,7 +131,7 @@ int main(){
                     criaQuadroVazioAlternativo(quadro);
                     printMatrizChar(lin, col, quadro);
                     preencheComidas(quadro);
-                    percorreSnakeEspiral(lin, col, quadro);
+                    percorreSnakeEspiral(quadro);
                 
                 break;
 
